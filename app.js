@@ -21,6 +21,7 @@ function attack (atacante, defensor){
     if(combateTerminado){
         return;
     }
+    
     defensor.pointsLife = defensor.pointsLife - atacante.pointsAttack;
     console.log(`${atacante.name} ataca a ${defensor.name}. Le hace ${atacante.pointsAttack} de daño. Vida restante de ${defensor.name} = ${defensor.pointsLife}.`);
     if(defensor.pointsLife <= 0 ){
@@ -29,10 +30,10 @@ function attack (atacante, defensor){
     }
        
 };
+while (!combateTerminado){
+        attack(player, goblin);
+        attack(goblin, player);
+    }
 
-attack(player, goblin);
-attack(goblin, player);
-attack(player, goblin);
-attack(goblin, player);
 attack(player, goblin);
 attack(goblin, player);
