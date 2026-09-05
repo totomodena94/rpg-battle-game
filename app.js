@@ -41,6 +41,12 @@ for (let round = 1; round <= 10; round++){
         };
         
      }
+
+     if(Math.random() < 0.5){
+        player.pointsAttack = player.pointsAttack *0.9;
+            console.log(`El brujo maldito aparece en tu camino. ${player.name} ha perdido 10 por ciento de ataque. Ataque restante de ${player.name}: ${player.pointsAttack}`);
+        
+     }
     
     //Se establece el bucle de ataques iniciando por el jugador y siguiendo por el enemy
     combateTerminado = false;
