@@ -1,4 +1,26 @@
 const nameEnemy = ["Goblin", "Rata gigante", "Bandido", "Lobo salvaje", "Esqueleto", "Orco", "Arpía", "Trol", "Caballero caído", "Dragón"];
+const armasDisponibles = [
+    {name: "Espada corta", bonus:0},
+    {name: "ESpada larga", bonus:8},
+    {name: "Mandoble", bonus:16},
+    {name:"Espada del alba", bonus: 28}
+];
+let weaponLevel = 0;
+const escudosDisponibles = [
+    {name:"Escudo de madera", blockChance: 0.05},
+    {name:"Escudo de hierro", blockChance: 0.12},
+    {name:"Escudo torreón", blockChance: 0.20},
+    {name:"Égida sagrada", blockChance: 0.32},
+];
+let shieldLevel = 0;
+const armadurasDisponibles = [
+    {name: "Ropa de viajero", reduction: 0.05},
+    {name: "Cota de malla", reduction: 0.12},
+    {name: "Armadura de placas", reduction: 0.20},
+    {name: "Armadura del guardián", reduction: 0.30},  
+
+];
+let armorLevel = 0;
 
 const player = {
     name: "Talos",
@@ -6,10 +28,6 @@ const player = {
     pointsLife: 70,
     maxPointsLife: 70,
     pointsAttack: 15,
-    equipment: {
-        weapon:"Shortsword",
-        shield: "Woodshield"
-                } 
 };
 
 /* 
@@ -41,7 +59,7 @@ for (let round = 1; round <= 10; round++){
         };
         
      }
-
+    //Se establece el brujo aleatoria que nerfea
      if(Math.random() < 0.5){
         player.pointsAttack = player.pointsAttack *0.9;
             console.log(`El brujo maldito aparece en tu camino. ${player.name} ha perdido 10 por ciento de ataque. Ataque restante de ${player.name}: ${player.pointsAttack}`);
@@ -69,13 +87,29 @@ function attack (atacante, defensor){
     if(Math.random() < 0.15){
         console.log(`${defensor.name} esquivó el golpe!`);
         return;
+    } else if(defensor === player && Math.random()< escudosDisponibles[shieldLevel].blockChance){
+        console.log(`${defensor.name} bloquó el golpe!`);
+        return
     }
     
     //Sistema de pérdida de puntos de salud y mensajería del sistema
-    let calculateMin = atacante.pointsAttack * 0.75;
+    let daño = 0;
+    if (atacante === player){
+    let calculateMin = (atacante.pointsAttack + armasDisponibles[weaponLevel].bonus) * 0.75;
+    let calculateMax = atacante.pointsAttack + armasDisponibles[weaponLevel].bonus;
+    daño = Math.floor(Math.random() * (calculateMax - calculateMin + 1)) + calculateMin;
+    } else{
+    let calculateMin = atacante.pointsAttack * 0.75
     let calculateMax = atacante.pointsAttack;
-    let daño = Math.floor(Math.random() * (calculateMax - calculateMin + 1)) + calculateMin;
+    daño = Math.floor(Math.random() * (calculateMax - calculateMin + 1)) + calculateMin;
+    }
+
+    if(defensor === player){
+        let dañoReal = daño - (daño * armadurasDisponibles[armorLevel].reduction);
+        defensor.pointsLife = defensor.pointsLife - dañoReal;
+        }else{
     defensor.pointsLife = defensor.pointsLife - daño;
+    }
     console.log(`${atacante.name} ataca a ${defensor.name}. Le hace ${daño} de daño. Vida restante de ${defensor.name} = ${defensor.pointsLife}.`);
     if(defensor.pointsLife <= 0 ){
         console.log(`${defensor.name} ha sido derrotado. Hoy la historia será escrita por ${atacante.name}`);
