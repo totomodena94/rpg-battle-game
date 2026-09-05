@@ -60,6 +60,11 @@ function attack (atacante, defensor){
     if(combateTerminado){
         return;
     }
+    if(Math.random() < 0.15){
+        console.log(`${defensor.name} esquivó el golpe!`);
+        return;
+    }
+    
     //Sistema de pérdida de puntos de salud y mensajería del sistema
     let calculateMin = atacante.pointsAttack * 0.75;
     let calculateMax = atacante.pointsAttack;
