@@ -1,4 +1,18 @@
 const nameEnemy = ["Goblin", "Rata gigante", "Bandido", "Lobo salvaje", "Esqueleto", "Orco", "Arpía", "Trol", "Caballero caído", "Dragón"];
+
+const introEnemy = [
+  "Un goblin famélico salta de entre los arbustos, blandiendo un cuchillo oxidado.", // Goblin
+  "Una rata gigante emerge de una alcantarilla, con los dientes goteando algo verdoso.", // Rata gigante
+  "Un bandido te corta el paso, sonriendo con la confianza de quien ya robó antes.", // Bandido
+  "Un lobo salvaje gruñe desde las sombras, con el pelaje erizado y hambriento.", // Lobo salvaje
+  "Un esqueleto se levanta con un crujido seco, sosteniendo lo que queda de una espada.", // Esqueleto
+  "Un orco avanza pesadamente, con los músculos tensos y un hacha manchada de sangre vieja.", // Orco
+  "Una arpía desciende chillando, con garras afiladas listas para desgarrar.", // Arpía
+  "El suelo tiembla: un trol se yergue frente a vos, más alto que cualquier árbol cercano.", // Trol
+  "Un caballero caído se acerca en silencio, su armadura oxidada aún conserva el honor de otra era.", // Caballero caído
+  "El cielo se oscurece. Un dragón desciende, y el aire se llena del calor de su aliento." // Dragón
+];
+
 const armasDisponibles = [
     {name: "Espada corta", bonus:0},
     {name: "ESpada larga", bonus:8},
@@ -40,17 +54,9 @@ for (let round = 1; round <= 10; round++){
     name: nameEnemy[round -1],
     pointsLife: 30 + (round * round * 6),
     pointsAttack: 4 + (round * round),
-    
 };
-
-//Se establece el sistema de subida de nivel. Por cada ronda el jugador sube un nivel y aumenta sus estadísticas.
-    player.level = player.level + 1;
-        let porcentaje = player.pointsLife / player.maxPointsLife
-        player.maxPointsLife = 65 + (round * round *5);
-        player.pointsAttack = 15 + (round *round*2);
-       player.pointsLife = porcentaje * player.maxPointsLife; 
-       console.log(`${player.name} ha subido de nivel. Sus estadísticas se han modificado. Su ataque ahora es de ${player.pointsAttack} y su vida es de ${player.pointsLife}`);
     
+
     //Se establece el healer cada dos turnos que restaura vida del jugador
      if(round % 2 ===0) {
         if(player.pointsLife < player.maxPointsLife * 0.75){
@@ -65,6 +71,8 @@ for (let round = 1; round <= 10; round++){
             console.log(`El brujo maldito aparece en tu camino. ${player.name} ha perdido 10 por ciento de ataque. Ataque restante de ${player.name}: ${player.pointsAttack}`);
         
      }
+     //Se establece el mensaje introductorio de cada enemigo.
+     console.log(`${introEnemy[round -1]}`);
     
     //Se establece el bucle de ataques iniciando por el jugador y siguiendo por el enemy
     combateTerminado = false;
@@ -72,11 +80,24 @@ for (let round = 1; round <= 10; round++){
         attack(player, enemy);
         attack(enemy, player);
     }
+
     //Se establece el game over
     if(player.pointsLife <= 0){
         console.log("Game over");
         break 
     }
+
+
+    //Se establece el sistema de subida de nivel. Por cada ronda el jugador sube un nivel y aumenta sus estadísticas.
+    player.level = player.level + 1;
+        let porcentaje = player.pointsLife / player.maxPointsLife
+        player.maxPointsLife = 65 + (round * round *5);
+        player.pointsAttack = 15 + (round *round*2);
+       player.pointsLife = porcentaje * player.maxPointsLife; 
+       console.log(`${player.name} ha subido de nivel. Sus estadísticas se han modificado. Su ataque ahora es de ${player.pointsAttack} y su vida es de ${player.pointsLife}`);
+    
+    
+    
 };
 
     //Función de ataque con su condición de finalización
@@ -110,11 +131,12 @@ function attack (atacante, defensor){
         }else{
     defensor.pointsLife = defensor.pointsLife - daño;
     }
-    console.log(`${atacante.name} ataca a ${defensor.name}. Le hace ${daño} de daño. Vida restante de ${defensor.name} = ${defensor.pointsLife}.`);
+    console.log(`${atacante.name} ataca a ${defensor.name}. Le hace ${daño.toFixed(1)} de daño. Vida restante de ${defensor.name} = ${Math.max(defensor.pointsLife, 0).toFixed(1)}.`);
     if(defensor.pointsLife <= 0 ){
         console.log(`${defensor.name} ha sido derrotado. Hoy la historia será escrita por ${atacante.name}`);
         combateTerminado = true;
     }
+    
        
 };
 
