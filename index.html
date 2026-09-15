@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Adventure rpg</title>
+</head>
+<body>
+  
+    <h1 id="title">Adventure RPG</h1>
+    <h2 id="title2">Start your journey</h2>
+    <div id="menu">
+        <button id="new-game">New Game</button>
+        <button id="how-to-play">How to play</button>
+    </div>
+    <div id="game">
+        <div id="player">
+            <div class="life">70/70</div>
+            <div class="sprite"><img src="./img/player-img.webp" alt=""></div>
+            <div class="name">Talos</div>
+        </div>
+        <div id="menu-central">
+            <div id="menu-actions">
+                <button id="attack">Attack</button>
+                <button id="potion">Use potion</button> 
+            </div>
+            <div id="text-log">
+                <p id="text"></p>
+            </div>
+        </div>
+        <div id="enemy">
+            <div class="life">30/30</div>
+            <div class="sprite"></div>
+            <div class="name">Enemy</div>
+        </div>
+    </div>
+
+    <footer>
+        <p id="creator">This game was created by Modena Lorenzo</p>
+    </footer>
+    <script src="app.js"> </script>
+</body>
+</html>

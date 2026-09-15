@@ -1,0 +1,88 @@
+
+@font-face {
+        font-family: "Primu anxient";
+        src: url(/home/ltmodena94/javascript-exercises/rpg-game/rpg-battle-game/PrimuAnxientTrialRegular-OGejo.ttf);
+    }
+    
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+    font-family: "Primu anxient";
+}
+body{
+    background-image: url("https://mir-s3-cdn-cf.behance.net/project_modules/1400/588a44195922117.66168b374ece8.gif");
+    height: 100vh;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+h1{
+    text-align: center;
+    font-size: 150px;
+    color: #DF301C;
+}
+h2{
+    text-align: center;
+    font-size: 45px;
+    color: black;
+}
+
+#menu{
+display: flex;
+flex-direction: column;
+color: gray;
+}
+
+
+#new-game {
+     color: #fff;
+     background-color: #DF301C; 
+     padding: 15px 40px 15px 40px;
+     margin: 10px;
+      font-size: 14px;
+        font-family: "Primu axient";
+     border: 0;
+     box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black, 0px 10px #FF9100, 5px 5px #FF9100, -5px 5px #FF9100, inset 0px 5px #ffffff36 ;
+     cursor: pointer;
+}
+ button:active {
+     transform: translateY(5px);
+     box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black,inset 0px 5px #00000038;
+}
+
+#how-to-play{
+    color: #fff;
+     background-color: #FF9100; 
+     padding: 15px 40px 15px 40px;
+     margin: 10px;
+      font-size: 14px;
+        font-family: "Primu axient";
+     border: 0;
+     box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black, 0px 10px #DF301C, 5px 5px #DF301C, -5px 5px #DF301C, inset 0px 5px #ffffff36 ;
+     cursor: pointer;
+}
+
+img{
+    width: 100%;
+}
+
+
+#game{
+    display: none;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+}
+#player, #enemy, #menu-central{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sprite img{
+    width: 150px;
+}

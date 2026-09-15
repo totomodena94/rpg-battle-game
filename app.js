@@ -141,5 +141,18 @@ function attack (atacante, defensor){
 };
 
 
+const newGameButton = document.getElementById("new-game");
+const menu = document.getElementById("menu");
+const gameWindow = document.getElementById("game");
+const title = document.getElementById("title");
+const title2 = document.getElementById("title2");
+const creatorFooter = document.getElementById("creator");
+newGameButton.addEventListener('click', function(game){
+    menu.style.display = "none";
+    title.style.display = "none";
+    title2.style.display = "none";
+    creatorFooter.style.display = "none";
+    gameWindow.style.display = "flex";
+})
 
 
