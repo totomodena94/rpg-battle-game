@@ -76,6 +76,10 @@ img{
     flex-direction: row;
     justify-content: space-evenly;
     width: 100%;
+    background-image: url(https://img.magnific.com/vector-gratis/fondo-templo-juego-dibujos-animados-campo-batalla-piedra_107791-20034.jpg?semt=ais_hybrid&w=740&q=80);
+    height: 100%;
+    background-size: cover;
+    align-items: center;
 }
 #player, #enemy, #menu-central{
     display: flex;

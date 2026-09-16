@@ -1,4 +1,16 @@
 const nameEnemy = ["Goblin", "Rata gigante", "Bandido", "Lobo salvaje", "Esqueleto", "Orco", "Arpía", "Trol", "Caballero caído", "Dragón"];
+const spriteEnemy = [
+     "img/files/goblin.svg",
+    "img/files/rata-gigante.svg",
+    "img/files/bandido.svg",
+    "img/files/lobo-salvaje.svg",
+    "img/files/esqueleto.svg",
+    "img/files/orco.svg",
+    "img/files/arpia.svg",
+    "img/files/trol.svg",
+    "img/files/caballero-caido.svg",
+    "img/files/dragon.svg"
+];
 
 const introEnemy = [
   "Un goblin famélico salta de entre los arbustos, blandiendo un cuchillo oxidado.", // Goblin
@@ -52,6 +64,7 @@ let combateTerminado = false;
 for (let round = 1; round <= 10; round++){
     const enemy = {
     name: nameEnemy[round -1],
+    sprite: spriteEnemy[round - 1],
     pointsLife: 30 + (round * round * 6),
     pointsAttack: 4 + (round * round),
 };
